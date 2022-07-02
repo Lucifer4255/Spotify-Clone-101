@@ -27,7 +27,7 @@ export default function Dashboard({ code }) {
     if (!playingTrack) return
 
     axios
-      .get("https://bearded-canoe-12839.herokuapp.com/lyrics", {
+      .get("https://localhost:3000/lyrics", {
         params: {
           track: playingTrack.title,
           artist: playingTrack.artist,

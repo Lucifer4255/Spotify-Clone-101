@@ -5,10 +5,11 @@ export default function useAuth(code) {
   const [accessToken, setAccessToken] = useState()
   const [refreshToken, setRefreshToken] = useState()
   const [expiresIn, setExpiresIn] = useState()
-
   useEffect(() => {
+    const linkLocal="localhost:3000"
+    const linkHeroku="bearded-canoe-12839.herokuapp.com"
     axios
-      .post("https://bearded-canoe-12839.herokuapp.com/login", {
+      .post(`https://localhost:3000/login`, {
         code,
       })
       .then(res => {
@@ -26,7 +27,7 @@ export default function useAuth(code) {
     if (!refreshToken || !expiresIn) return
     const interval = setInterval(() => {
       axios
-        .post("https://bearded-canoe-12839.herokuapp.com/refresh", {
+        .post(`https://localhost:3000/refresh`, {
           refreshToken,
         })
         .then(res => {
